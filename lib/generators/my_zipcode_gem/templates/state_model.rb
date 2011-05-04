@@ -9,7 +9,7 @@ class State < ActiveRecord::Base
   validates :name, :uniqueness => { :case_sensitive => false }, :presence => true
   
   def cities
-    zipcodes.map(&:city)
+    zipcodes.map(&:city).sort.uniq
   end
   memoize :cities
 end

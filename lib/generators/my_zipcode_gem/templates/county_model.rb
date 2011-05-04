@@ -11,7 +11,7 @@ class County < ActiveRecord::Base
   scope :without_state, where("state_id IS NULL")
   
   def cities
-    zipcodes.map(&:city)
+    zipcodes.map(&:city).sort.uniq
   end
   memoize :cities
 end

@@ -1,5 +1,5 @@
 module MyZipcodeGem
-  class ZipcodesGenerator < Base
+  class ModelsGenerator < Base
     include Rails::Generators::Migration
 
     source_root File.expand_path('../templates', __FILE__)
@@ -8,7 +8,7 @@ module MyZipcodeGem
       super
     end
 
-    def generate_zipcodes
+    def generate_models
       # puts ">>> generate_zipcodes:"
     end
     
