@@ -93,4 +93,71 @@ namespace :zipcodes do
     Rake::Task['zipcodes:update_zipcodes'].invoke
   end
 
+  desc "Export US States to a .csv file"
+  task :export_states => :environment do
+    @states = State.order("name ASC")
+    csv_string = FasterCSV.generate do |csv|
+      csv << ["abbr", "name"]
+      @states.each do |state|
+        csv << [
+          state.abbr,
+          state.name
+          ]
+      end
+    end
+    filename = "all_us_states.csv"
+    open("#{Rails.root}/db/#{filename}", 'w') do |f|
+      f.write(csv_string)
+    end
+  end
+
+  desc "Export all US Counties to a .csv file"
+  task :export_counties => :environment do
+    @counties = County.order("name ASC")
+    csv_string = FasterCSV.generate do |csv|
+      csv << ["name", "state", "county_seat"]
+      @counties.each do |county|
+        csv << [
+          county.name,
+          county.state.abbr,
+          county.county_seat
+          ]
+      end
+    end
+    filename = "all_us_counties.csv"
+    open("#{Rails.root}/db/#{filename}", 'w') do |f|
+      f.write(csv_string)
+    end
+  end
+
+  desc "Export the zipcodes with county and state data"
+  task :export_zipcodes => :environment do
+    @zipcodes = Zipcode.order("code ASC")
+    csv_string = FasterCSV.generate do |csv|
+      csv << ["code", "city", "state", "county", "area_code", "lat", "lon"]
+      @zipcodes.each do |zip|
+        csv << [
+          zip.code,
+          zip.city,
+          zip.state.abbr,
+          zip.county.nil? ? '' : zip.county.name,
+          zip.area_code,
+          zip.lat,
+          zip.lon
+          ]
+      end
+    end
+    filename = "all_us_zipcodes.csv"
+    open("#{Rails.root}/db/#{filename}", 'w') do |f|
+      f.write(csv_string)
+    end
+  end
+
+  desc "Export zipcodes, states and counties tables"
+  task :export => :environment do
+    Rake::Task['zipcodes:export_states'].invoke
+    Rake::Task['zipcodes:export_counties'].invoke
+    Rake::Task['zipcodes:export_zipcodes'].invoke
+  end
+
 end

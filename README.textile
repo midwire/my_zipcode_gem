@@ -1,6 +1,6 @@
 h1. My Zipcode Gem
 
-Simple gem to handle zipcode lookups and related functionality.
+Simple gem to handle zipcode lookups and related functionality.  @rake zipcodes:update@ will automatically download and update your local zipcode database.  Generates three models for extended zipcode functionality.
 
 h2. Installation
 
@@ -15,20 +15,20 @@ bc. rake bundle install
 Generate the models and populate the data:
 
 bc. rails g my_zipcode_gem:models
-    rake db:migrate
-    rake zipcodes:update
+rake db:migrate
+rake zipcodes:update
   
 You should now have three new tables and three new models, Zipcode, State, County.
 
 h2. Usage
 
 bc. zipcode = Zipcode.find_by_code '66206'
-    zipcode.state.abbr    # => 'KS'
-    zipcode.city          # => 'Shawnee Mission'
-    zipcode.county.name   # => 'Johnson'
-    zipcode.lat.to_s      # => '38.959356', it is actually a BigDecimal object converted to_s for documentation.
-    zipcode.lon.to_s      # => '-94.716155', ditto
-    zipcode.is_geocoded?  # => true, most if not all should be pre-geocoded.
+zipcode.state.abbr    # => 'KS'
+zipcode.city          # => 'Shawnee Mission'
+zipcode.county.name   # => 'Johnson'
+zipcode.lat.to_s      # => '38.959356', it is actually a BigDecimal object converted to_s for documentation.
+zipcode.lon.to_s      # => '-94.716155', ditto
+zipcode.is_geocoded?  # => true, most if not all should be pre-geocoded.
   
 You can also look for a zipcode from a city and state:
 
@@ -37,14 +37,14 @@ bc. Zipcode.find_by_city_state "Shawnee Mission", "KS"
 You can use State and County objects as follows:
 
 bc. state = State.find_by_abbr "MO"
-    state.cities.count    # => 963
-    state.cities          # gives you an sorted array of all cities for the state
-    state.zipcodes.count  # => 1195
-    ...
-    county = state.counties.first
-    county.cities.count   # => 5
-    county.cities         # gives you an sorted array of all cities for the county
-    county.zipcodes.count # => 5
+state.cities.count    # => 963
+state.cities          # gives you a sorted array of all cities for the state
+state.zipcodes.count  # => 1195
+...
+county = state.counties.first
+county.cities.count   # => 5
+county.cities         # gives you a sorted array of all cities for the county
+county.zipcodes.count # => 5
   
 h3. Automatic JQuery/AJAX lookup
 
@@ -53,13 +53,13 @@ You can have a user enter a zipcode and automatically lookup their city, state a
 Put something like this in your view:
 
 bc. f.text_field :zip, :size => 5, :maxlength => 5, :class => 'zipcode_interactive'
-    f.text_field :city, :size => 20, :maxlength => 60, :readonly => true
-    f.text_field(:state, :size => 2, :maxlength => 2, :readonly => true)
-    f.text_field(:county, :size => 20, :maxlength => 60, :readonly => true)
+f.text_field :city, :size => 20, :maxlength => 60, :readonly => true
+f.text_field(:state, :size => 2, :maxlength => 2, :readonly => true)
+f.text_field(:county, :size => 20, :maxlength => 60, :readonly => true)
 
 Then add this to your application.js, but remember to replace [mycontrollername] with your own controller.
 
-bc. $(document).ready(function() {
+bc.    $(document).ready(function() {
         // Interactive Zipcodes
         $('input.zipcode_interactive').blur(function(data) {
             var elem_id = $(this).attr("id");
@@ -83,7 +83,7 @@ bc. $(document).ready(function() {
 
 You will also need a controller method similar to this, which will return the data to your form:
 
-bc. def get_zip_data
+bc.    def get_zip_data
       @zipcode = Zipcode.find_by_code(params[:code], :include => [:county, :state])
       if @zipcode
         @counties = County.find(:all, :conditions => [ "state_id = ?", @zipcode.county.state_id ])
