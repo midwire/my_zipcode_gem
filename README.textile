@@ -1,5 +1,7 @@
 h1. My Zipcode Gem
 
+[![Build Status](http://travis-ci.org/midwire/my_zipcode_gem.png)](http://travis-ci.org/midwire/my_zipcode_gem)
+
 Simple gem to handle zipcode lookups and related functionality.  @rake zipcodes:update@ will automatically download and update your local zipcode database.  Generates three models for extended zipcode functionality.
 
 h2. Installation
@@ -7,17 +9,17 @@ h2. Installation
 Add the following line to your Gemfile:
 
 bc. gem 'my_zipcode_gem'
-  
+
 Run:
 
 bc. rake bundle install
-  
+
 Generate the models and populate the data:
 
 bc. rails g my_zipcode_gem:models
 rake db:migrate
 rake zipcodes:update
-  
+
 You should now have three new tables and three new models, Zipcode, State, County.
 
 h2. Usage
@@ -29,7 +31,7 @@ zipcode.county.name   # => 'Johnson'
 zipcode.lat.to_s      # => '38.959356', it is actually a BigDecimal object converted to_s for documentation.
 zipcode.lon.to_s      # => '-94.716155', ditto
 zipcode.is_geocoded?  # => true, most if not all should be pre-geocoded.
-  
+
 You can also look for a zipcode from a city and state:
 
 bc. Zipcode.find_by_city_state "Shawnee Mission", "KS"
@@ -45,7 +47,7 @@ county = state.counties.first
 county.cities.count   # => 5
 county.cities         # gives you a sorted array of all cities for the county
 county.zipcodes.count # => 5
-  
+
 h3. Automatic JQuery/AJAX lookup
 
 You can have a user enter a zipcode and automatically lookup their city, state and county.
@@ -115,7 +117,7 @@ And define a route for the AJAX function in routes.rb:
 
 bc. get 'mycontrollername/get_zip_data/:code', :controller => 'mycontrollername', :action => 'get_zip_data'
 
-That's about it.  
+That's about it.
 
 Let me know if there are any errors.  I cut and pasted the code above from a working application, but there may be some gotchas that I missed.
 
