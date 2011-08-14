@@ -1,7 +1,5 @@
 h1. My Zipcode Gem
 
-!http://travis-ci.org/midwire/my_zipcode_gem.png(Build Status)!:http://travis-ci.org/midwire/my_zipcode_gem
-
 Simple gem to handle zipcode lookups and related functionality.  @rake zipcodes:update@ will automatically download and update your local zipcode database.  Generates three models for extended zipcode functionality.
 
 h2. Installation
