@@ -3,3 +3,5 @@
 Gemfile.lock
 pkg/*
 tmp/*
+vendor/bundle
+lib/generators/generators
