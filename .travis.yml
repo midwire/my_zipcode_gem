@@ -1,9 +1,5 @@
 rvm:
   - 1.8.7
-  - 1.9.2
 gemfile:
   - gemfiles/Gemfile.rails-2.3.x
   - gemfiles/Gemfile.rails-3.0.x
-env:
-  - ISOLATED=true
-  - ISOLATED=false
