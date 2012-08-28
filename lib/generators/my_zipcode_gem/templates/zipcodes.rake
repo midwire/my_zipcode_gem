@@ -1,5 +1,5 @@
 require 'open-uri'
-require 'fastercsv'
+require 'csv'
 namespace :zipcodes do
 
   desc "Update states table"
@@ -16,7 +16,7 @@ namespace :zipcodes do
     else
       file = data
     end
-    FasterCSV.foreach(file.path, :headers => true) do |row|
+    CSV.foreach(file.path, :headers => true) do |row|
       puts "Updating state: [#{row['name']}]"
       state = State.find_or_initialize_by_abbr(row['abbr'])
       state.update_attribute(:name, row['name'])
@@ -39,7 +39,7 @@ namespace :zipcodes do
     else
       file = data
     end
-    FasterCSV.foreach(file.path, :headers => true) do |row|
+    CSV.foreach(file.path, :headers => true) do |row|
       puts "Updating county: [#{row['name']}]"
       # lookup state
       state = State.find_by_abbr!(row['state'])
@@ -64,7 +64,7 @@ namespace :zipcodes do
     else
       file = data
     end
-    FasterCSV.foreach(file.path, :headers => true) do |row|
+    CSV.foreach(file.path, :headers => true) do |row|
       puts "Updating zipcode: [#{row['code']}], '#{row['city']}, #{row['state']}, #{row['county']}"
       # lookup state
       state = State.find_by_abbr!(row['state'])
@@ -96,7 +96,7 @@ namespace :zipcodes do
   desc "Export US States to a .csv file"
   task :export_states => :environment do
     @states = State.order("name ASC")
-    csv_string = FasterCSV.generate do |csv|
+    csv_string = CSV.generate do |csv|
       csv << ["abbr", "name"]
       @states.each do |state|
         csv << [
@@ -114,7 +114,7 @@ namespace :zipcodes do
   desc "Export all US Counties to a .csv file"
   task :export_counties => :environment do
     @counties = County.order("name ASC")
-    csv_string = FasterCSV.generate do |csv|
+    csv_string = CSV.generate do |csv|
       csv << ["name", "state", "county_seat"]
       @counties.each do |county|
         csv << [
@@ -133,7 +133,7 @@ namespace :zipcodes do
   desc "Export the zipcodes with county and state data"
   task :export_zipcodes => :environment do
     @zipcodes = Zipcode.order("code ASC")
-    csv_string = FasterCSV.generate do |csv|
+    csv_string = CSV.generate do |csv|
       csv << ["code", "city", "state", "county", "area_code", "lat", "lon"]
       @zipcodes.each do |zip|
         csv << [
