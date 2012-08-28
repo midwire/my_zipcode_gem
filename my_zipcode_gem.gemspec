@@ -21,7 +21,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency('rails', '>= 3.0.0')
   s.add_dependency('rubigen', '1.5.6')
-  s.add_dependency('fastercsv')
 
   s.add_development_dependency('sqlite3-ruby')
   s.add_development_dependency('shoulda', '2.11.3')
