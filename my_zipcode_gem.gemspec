@@ -21,14 +21,4 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency('rails', '>= 3.0.0')
-  s.add_dependency('rubigen', '1.5.6')
-
-  s.add_development_dependency('sqlite3-ruby')
-  s.add_development_dependency('shoulda', '2.11.3')
-  s.add_development_dependency('rspec')
-  s.add_development_dependency('rspec-rails')
-  s.add_development_dependency('cucumber')
-  s.add_development_dependency('cucumber-rails')
-  s.add_development_dependency('pry') # For local debugging
-  s.add_development_dependency('midwire_common') # For rake release task
 end

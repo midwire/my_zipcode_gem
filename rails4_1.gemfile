@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gemspec
+gem 'rails', '~> 4.1.0'
 
 # jquery-rails is used by the dummy application
 gem 'jquery-rails'
@@ -10,7 +11,7 @@ gem 'pg'
 gem 'railties'
 
 group :test do
-  gem 'capybara'
+  gem 'capybara', '~> 2.0.2'
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'shoulda', '~> 3.3.0'
