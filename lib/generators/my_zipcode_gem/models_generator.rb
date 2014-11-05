@@ -6,6 +6,7 @@ module MyZipcodeGem
     
     def initialize(*args, &block)
       super
+      migration_template 'migration.rb', "db/migrate/create_my_zipcode_gem_models.rb"
     end
 
     def generate_models
@@ -32,9 +33,9 @@ module MyZipcodeGem
       end
     end
     
-    def create_migration
-      migration_template 'migration.rb', "db/migrate/create_my_zipcode_gem_models.rb"
-    end
+#    def create_migration
+#      migration_template 'migration.rb', "db/migrate/create_my_zipcode_gem_models.rb"
+#    end
     
     def create_rakefile
       template 'zipcodes.rake', "lib/tasks/zipcodes.rake"
@@ -43,4 +44,3 @@ module MyZipcodeGem
   end
 end
 
-# /Users/cblackburn/.rvm/gems/ruby-1.9.2-p136/gems/activerecord-3.0.3/lib/rails/generators/active_record/

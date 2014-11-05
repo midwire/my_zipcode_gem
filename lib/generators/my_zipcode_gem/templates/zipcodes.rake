@@ -18,7 +18,7 @@ namespace :zipcodes do
     end
     CSV.foreach(file.path, :headers => true) do |row|
       puts "Updating state: [#{row['name']}]"
-      state = State.find_or_initialize_by_abbr(row['abbr'])
+      state = State.where(abbr: row['abbr']).first_or_initialize
       state.update_attribute(:name, row['name'])
     end
     data.close
@@ -43,7 +43,7 @@ namespace :zipcodes do
       puts "Updating county: [#{row['name']}]"
       # lookup state
       state = State.find_by_abbr!(row['state'])
-      county = County.find_or_initialize_by_name_and_state_id(row['name'], state.to_param)
+      county = County.where(name: row['name'], state_id: state.to_param).first_or_initialize
       county.update_attribute(:county_seat, row['county_seat'])
     end
     data.close
@@ -75,7 +75,7 @@ namespace :zipcodes do
         puts ">>>> No county found for zipcode: [#{row['code']}], '#{row['city']}, #{row['state']}, #{row['county']}... SKIPPING..."
         next
       end
-      zipcode = Zipcode.find_or_initialize_by_code(row['code'])
+      zipcode = Zipcode.where(code: row['code']).first_or_initialize
       zipcode.update_attributes!(
         :city => row['city'].titleize,
         :state_id => state.to_param,
