@@ -1,5 +1,7 @@
 h1. My Zipcode Gem
 
+!https://img.shields.io/github/license/midwire/my_zipcode_gem.svg!:https://github.com/midwire/my_zipcode_gem/blob/master/MIT-LICENSE
+
 Simple gem to handle zipcode lookups and related functionality.  @rake zipcodes:update@ will automatically download and update your local zipcode database.  Generates three models for extended zipcode functionality.
 
 h2. Installation
