@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.homepage    = "https://github.com/midwire/my_zipcode_gem"
   s.summary     = %q{A Ruby gem to handle all things zipcode.}
   s.description = %q{A Ruby gem for looking up and manipulating US postal codes and geocodes.}
+  s.licenses    = ['MIT']
 
   s.rubyforge_project = "my_zipcode_gem"
 
