@@ -1,3 +1,4 @@
+require 'rails/generators/actions'
 require 'rails/generators/base'
 
 module MyZipcodeGem
