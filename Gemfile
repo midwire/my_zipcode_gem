@@ -7,6 +7,7 @@ gem 'jquery-rails'
 gem 'sqlite3'
 gem 'mysql2'
 gem 'pg'
+gem 'midwire_common'
 
 group :test do
   gem 'capybara'
