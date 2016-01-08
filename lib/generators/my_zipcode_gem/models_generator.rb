@@ -3,7 +3,7 @@ module MyZipcodeGem
     include Rails::Generators::Migration
 
     source_root File.expand_path('../templates', __FILE__)
-    
+
     def initialize(*args, &block)
       super
       migration_template 'migration.rb', "db/migrate/create_my_zipcode_gem_models.rb"
@@ -12,11 +12,11 @@ module MyZipcodeGem
     def generate_models
       # puts ">>> generate_zipcodes:"
     end
-    
+
     def add_gems
       add_gem "mocha", :group => :test
     end
-    
+
     def create_models
       template 'zipcode_model.rb', "app/models/zipcode.rb"
       template 'county_model.rb', "app/models/county.rb"
@@ -32,15 +32,14 @@ module MyZipcodeGem
         "%.3d" % (current_migration_number(dirname) + 1)
       end
     end
-    
-#    def create_migration
-#      migration_template 'migration.rb', "db/migrate/create_my_zipcode_gem_models.rb"
-#    end
-    
+
+    # def create_migration
+    #  migration_template 'migration.rb', "db/migrate/create_my_zipcode_gem_models.rb"
+    # end
+
     def create_rakefile
       template 'zipcodes.rake', "lib/tasks/zipcodes.rake"
     end
-    
+
   end
 end
-
