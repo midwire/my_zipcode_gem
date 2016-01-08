@@ -1,5 +1,6 @@
+require 'memoist'
 class County < ActiveRecord::Base
-  extend ActiveSupport::Memoizable
+  extend Memoist
   attr_accessible :state_id, :region_id, :abbr, :name, :count_seat
 
   belongs_to :state

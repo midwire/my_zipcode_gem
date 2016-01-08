@@ -1,5 +1,6 @@
+require 'memoist'
 class State < ActiveRecord::Base
-  extend ActiveSupport::Memoizable
+  extend Memoist
   attr_accessible :abbr, :name
 
   has_many :zipcodes

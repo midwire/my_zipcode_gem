@@ -65,7 +65,7 @@ Then(/^I should see (\d+) records in the "([^\"]*)" table$/) do |count, table_na
   FileUtils.chdir(@current_directory)
   ActiveRecord::Base.establish_connection(
     :adapter => 'sqlite3', 
-    :database => "db/development.sqlite3",
+    :database => "db/test.sqlite3",
     :pool => 5,
     :timeout => 5000
   )

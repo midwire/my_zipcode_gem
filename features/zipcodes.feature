@@ -13,7 +13,7 @@ Feature: My Zipcode Gem
       | app/models/county.rb     |
       | lib/tasks/zipcodes.rake  |
       | db/migrate               |
-    And I should see "gem "mocha", :group => :test" in file "Gemfile"
+    And I should see "gem "mocha"" in file "Gemfile"
     And I should successfully run "rake db:migrate"
 
   Scenario: Update data for zipcodes, counties and states tables
