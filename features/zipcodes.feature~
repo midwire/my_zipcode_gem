@@ -1,12 +1,12 @@
-Feature: Us ZipCode Gem
+Feature: My Zipcode Gem
   In order to manage zipcode resources
   As a rails developer
   I want to generate models for zipcode, county and state, and populate their tables
 
   Scenario: Generate models and migration for zipcode, county and state
     Given a new Rails app
-    Then I should see "us_zipcode:models" when running "rails g"
-    When I run "rails g us_zipcode:models"
+    Then I should see "my_zipcode_gem:models" when running "rails g"
+    When I run "rails g my_zipcode_gem:models"
     Then I should see the following files
       | app/models/zipcode.rb    |
       | app/models/state.rb      |
