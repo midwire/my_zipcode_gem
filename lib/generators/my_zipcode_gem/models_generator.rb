@@ -33,9 +33,10 @@ module MyZipcodeGem
       end
     end
 
-    # def create_migration
-    #  migration_template 'migration.rb', "db/migrate/create_my_zipcode_gem_models.rb"
-    # end
+    def create_zipcode_migration
+      destination_file = "db/migrate/create_my_zipcode_gem_models.rb"
+      migration_template "migration.rb", destination_file
+    end
 
     def create_rakefile
       template 'zipcodes.rake', "lib/tasks/zipcodes.rake"
