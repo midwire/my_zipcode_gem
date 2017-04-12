@@ -6,8 +6,8 @@ Simple gem to handle zipcode lookups and related functionality.  `rake zipcodes:
 
 ## Versions
 
-0.1.x is for Rails versions less than 4.x
-0.2.x is for Rails 4 and above
+* 0.1.x is for Rails versions less than 4.x
+* 0.2.x is for Rails 4 and above
 
 ## Installation
 
