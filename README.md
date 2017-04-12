@@ -38,7 +38,7 @@ zipcode.city          # => 'Shawnee Mission'
 zipcode.county.name   # => 'Johnson'
 zipcode.lat.to_s      # => '38.959356', it is actually a BigDecimal object converted to_s for documentation.
 zipcode.lon.to_s      # => '-94.716155', ditto
-zipcode.is_geocoded?  # => true, most if not all should be pre-geocoded.
+zipcode.geocoded?  # => true, most if not all should be pre-geocoded.
 ```
 
 You can also look for a zipcode from a city and state:
