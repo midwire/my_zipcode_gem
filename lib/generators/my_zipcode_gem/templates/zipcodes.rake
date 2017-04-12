@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'csv'
+
 namespace :zipcodes do
 
   desc "Update states table"
