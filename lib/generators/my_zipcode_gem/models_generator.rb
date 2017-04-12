@@ -41,6 +41,5 @@ module MyZipcodeGem
     def create_rakefile
       template 'zipcodes.rake', "lib/tasks/zipcodes.rake"
     end
-
   end
 end
