@@ -8,8 +8,17 @@ class County < ActiveRecord::Base
   validates :name, uniqueness: { scope: :state_id, case_sensitive: false },
                    presence: true
 
-  scope :without_zipcodes, -> { joins("LEFT JOIN zipcodes ON zipcodes.county_id = counties.id").where("zipcodes.county_id IS NULL") }
-  scope :without_state, -> { where("state_id IS NULL") }
+  scope :without_zipcodes, lambda {
+    county = County.arel_table
+    zipcodes = Zipcode.arel_table
+    zipjoin = county
+        .join(zipcodes, Arel::Nodes::OuterJoin)
+        .on(zipcodes[:county_id].eq(county[:id]))
+    joins(zipjoin.join_sources).where(zipcodes[:county_id].eq(nil))
+  }
+  scope :without_state, lambda {
+    where(state_id: nil)
+  }
 
   def cities
     zipcodes.map(&:city).sort.uniq
