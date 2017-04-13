@@ -31,62 +31,62 @@ CommentAnnotation:
 Style/Documentation:
   Enabled: false
 
-Style/FileName:
-  Enabled: false
+# Style/FileName:
+#   Enabled: false
 
-Style/AlignParameters:
-  EnforcedStyle: with_fixed_indentation
+# Style/AlignParameters:
+#   EnforcedStyle: with_fixed_indentation
 
-Style/RegexpLiteral:
-  Enabled: false
+# Style/RegexpLiteral:
+#   Enabled: false
 
-Style/EmptyLinesAroundBlockBody:
-  Enabled: false
+# Style/EmptyLinesAroundBlockBody:
+#   Enabled: false
 
-Style/RaiseArgs:
-  Enabled: false
+# Style/RaiseArgs:
+#   Enabled: false
 
-Style/DoubleNegation:
-  Enabled: false
+# Style/DoubleNegation:
+#   Enabled: false
 
-Style/SignalException:
-  EnforcedStyle: semantic
+# Style/SignalException:
+#   EnforcedStyle: semantic
 
-Style/ClassAndModuleChildren:
-  Enabled: false
+# Style/ClassAndModuleChildren:
+#   Enabled: false
 
 Style/MultilineMethodCallIndentation:
   EnforcedStyle: indented
   IndentationWidth: 4
 
-Style/CaseIndentation:
-  Enabled: false
+# Style/CaseIndentation:
+#   Enabled: false
 
-Style/TrivialAccessors:
-  Enabled: false
+# Style/TrivialAccessors:
+#   Enabled: false
 
-########################################
-# Lint Cops
+# ########################################
+# # Lint Cops
 
-Lint/Eval:
-  Enabled: true
+# Lint/Eval:
+#   Enabled: true
 
-Lint/EndAlignment:
-  AlignWith: variable
-  Enabled: true
+# Lint/EndAlignment:
+#   AlignWith: variable
+#   Enabled: true
 
-Lint/AssignmentInCondition:
-  Enabled: false
+# Lint/AssignmentInCondition:
+#   Enabled: false
 
-########################################
-# Metrics Cops
+# ########################################
+# # Metrics Cops
 
-Metrics/LineLength:
-  Max: 110
+# Metrics/LineLength:
+#   Max: 110
 
-Metrics/MethodLength:
-  CountComments: false # count full line comments?
-  Max: 20
+# Metrics/MethodLength:
+#   CountComments: false # count full line comments?
+#   Max: 20
 
-Metrics/ClassLength:
-  Max: 120
+# Metrics/ClassLength:
+#   Max: 120
