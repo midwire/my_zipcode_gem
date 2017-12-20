@@ -13,6 +13,7 @@ class Zipcode < ActiveRecord::Base
     def find_by_city_state(city, state)
       includes(county: :state)
         .where("city like ? AND states.abbr like ?", "#{city}%", "%#{state}%")
+        .references(:state)
         .first
     end
   end
