@@ -16,3 +16,9 @@ gemfile:
  - rails3_2.gemfile
   - rails4_0.gemfile
   - rails4_1.gemfile
+
+deploy:
+  provider: rubygems
+  api_key: $RUBYGEMS_KEY
+  on:
+    all_branches: true
