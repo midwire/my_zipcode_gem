@@ -22,3 +22,4 @@ deploy:
   api_key: $RUBYGEMS_KEY
   on:
     all_branches: true
+    ruby: 2.3
