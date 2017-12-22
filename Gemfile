@@ -2,12 +2,6 @@ source 'https://rubygems.org'
 
 gemspec
 
-# jquery-rails is used by the dummy application
-gem 'jquery-rails'
-gem 'sqlite3'
-gem 'mysql2'
-gem 'pg'
-
 group :development do
   gem 'midwire_common'
 end

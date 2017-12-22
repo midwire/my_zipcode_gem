@@ -12,7 +12,11 @@ class TravisHelper
   end
 
   def self.tag?
-    !!ENV['TRAVIS_TAG']
+    !!ENV['TRAVIS_TAG'] && ENV['TRAVIS_TAG'] != ''
+  end
+
+  def self.pull_request?
+    ENV['TRAVIS_PULL_REQUEST'] != 'false'
   end
 end
 
@@ -20,7 +24,7 @@ Gem::Specification.new do |s|
   s.name        = "my_zipcode_gem"
   s.version     = MyZipcodeGem::VERSION
 
-  if TravisHelper.travis? && !TravisHelper.master_branch? && !TravisHelper.tag?
+  if TravisHelper.travis? && !(TravisHelper.master_branch? || TravisHelper.tag? || TravisHelper.pull_request?)
     s.version     = "#{s.version}-alpha-#{ENV['TRAVIS_BUILD_NUMBER']}"
   end
 
