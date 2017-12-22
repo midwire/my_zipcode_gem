@@ -10,7 +10,7 @@ before_script:
 #  - mysql -e 'create database my_zipcode_gem_test;'
 
 script:
-  - exit 0
+  - echo 'Pass'
 
 gemfile:
  - rails3_2.gemfile
