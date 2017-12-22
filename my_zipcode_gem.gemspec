@@ -2,23 +2,25 @@
 $:.push File.expand_path("../lib", __FILE__)
 require "generators/my_zipcode_gem/version"
 
+class TravisHelper
+  def self.travis?
+    !!ENV['TRAVIS']
+  end
+
+  def self.master_branch?
+    ENV['TRAVIS_BRANCH'] == 'master'
+  end
+
+  def self.tag?
+    !!ENV['TRAVIS_TAG']
+  end
+end
+
 Gem::Specification.new do |s|
   s.name        = "my_zipcode_gem"
   s.version     = MyZipcodeGem::VERSION
 
-  def travis?
-    ENV['TRAVIS']
-  end
-
-  def master_branch?
-    ENV['TRAVIS_BRANCH'] == 'master'
-  end
-
-  def tag?
-    ENV['TRAVIS_TAG']
-  end
-
-  if travis? && !master_branch? && !tag?
+  if TravisHelper.travis? && !TravisHelper.master_branch? && !TravisHelper.tag?
     s.version     = "#{s.version}-alpha-#{ENV['TRAVIS_BUILD_NUMBER']}"
   end
 
