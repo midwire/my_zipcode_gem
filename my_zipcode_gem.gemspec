@@ -38,5 +38,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency('rails', '>= 3.0.0')
-  s.add_dependency('memoist', '~> 0.11.0')
+  s.add_dependency('memoist', '~> 0.16.0')
 end
