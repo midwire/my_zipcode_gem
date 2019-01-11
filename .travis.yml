@@ -1,7 +1,6 @@
 language: ruby
 
 rvm:
-  - 1.9.3
   - 2.3
   - 2.4
 
@@ -13,6 +12,6 @@ script:
   - echo 'Pass'
 
 gemfile:
- - rails3_2.gemfile
+  - rails3_2.gemfile
   - rails4_0.gemfile
   - rails4_1.gemfile
