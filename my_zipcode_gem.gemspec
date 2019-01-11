@@ -5,6 +5,23 @@ require "generators/my_zipcode_gem/version"
 Gem::Specification.new do |s|
   s.name        = "my_zipcode_gem"
   s.version     = MyZipcodeGem::VERSION
+
+  def travis?
+    ENV['TRAVIS']
+  end
+
+  def master_branch?
+    ENV['TRAVIS_BRANCH'] == 'master'
+  end
+
+  def tag?
+    ENV['TRAVIS_TAG']
+  end
+
+  if travis? && !master_branch? && !tag?
+    s.version     = "#{s.version}-alpha-#{ENV['TRAVIS_BUILD_NUMBER']}"
+  end
+
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Chris Blackburn", "Chris McKnight"]
   s.email       = ["chris [at] midwiretech [dot] com", "cmckni3 [at] gmail [dot] com"]
@@ -21,5 +38,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency('rails', '>= 3.0.0')
-  s.add_dependency('memoist', '~> 0.11.0')
+  s.add_dependency('memoist', '~> 0.16.0')
 end

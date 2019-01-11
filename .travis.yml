@@ -1,19 +1,17 @@
 language: ruby
-bundler_args: --without development
+
 rvm:
-  - 1.9.3
-  - 2.0
-  - 2.1
-  
+  - 2.3
+  - 2.4
+
 before_script:
 #  - psql -c 'create database my_zipcode_gem_test;' -U postgres
 #  - mysql -e 'create database my_zipcode_gem_test;'
-  
+
+script:
+  - echo 'Pass'
+
 gemfile:
   - rails3_2.gemfile
   - rails4_0.gemfile
   - rails4_1.gemfile
-  
-branches:
-  only:
-    - master
